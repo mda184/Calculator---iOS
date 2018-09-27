@@ -9,23 +9,19 @@
 #import "ViewController.h"
 
 @interface ViewController ()
-- (IBAction)numberPressed:(UIButton *)sender;
-- (IBAction)operatorPressed:(UIButton *)sender;
-@property (weak, nonatomic) IBOutlet UILabel *solutionLabel;
+@property (weak, nonatomic) IBOutlet UILabel *displayLabel;
 
 @end
 
 @implementation ViewController
 
-bool isOperatorClicked = FALSE;
-char anyOperator;
-NSMutableString *firstDigit;
-NSMutableString *secondDigit;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    firstDigit = NULL;
-    secondDigit = NULL;
+    isOperatorClicked =FALSE;
+    firstNum =NULL;
+    secondNum = NULL;
+    //result;
 }
 
 
@@ -35,46 +31,35 @@ NSMutableString *secondDigit;
 }
 
 
+
 - (IBAction)numberPressed:(UIButton *)sender {
-    while (!isOperatorClicked) {
-        
-        if ([sender.titleLabel.text isEqualToString:@"1"]){
-            [firstDigit stringByAppendingString:firstDigit];
+    if (isOperatorClicked == FALSE) {
+        if (firstNum == NULL) {
+            firstNum = [NSString stringWithFormat:@"%i",sender.tag];
+            self.displayLabel.text = [NSString stringWithFormat:@"%i",firstNum];
         }
-        else if ([sender.titleLabel.text isEqualToString:@"2"]){
-            [firstDigit stringByAppendingString:firstDigit];
-        }
-        else if ([sender.titleLabel.text isEqualToString:@"3"]){
-            [firstDigit stringByAppendingString:firstDigit];
-        }
-        else if ([sender.titleLabel.text isEqualToString:@"4"]){
-            [firstDigit stringByAppendingString:firstDigit];
-        }
-        else if ([sender.titleLabel.text isEqualToString:@"5"]){
-            [firstDigit stringByAppendingString:firstDigit];
-        }
-        else if ([sender.titleLabel.text isEqualToString:@"6"]){
-            [firstDigit stringByAppendingString:firstDigit];
-        }
-        else if ([sender.titleLabel.text isEqualToString:@"7"]){
-            [firstDigit stringByAppendingString:firstDigit];
-        }
-        else if ([sender.titleLabel.text isEqualToString:@"8"]){
-            [firstDigit stringByAppendingString:firstDigit];
-        }
-        else if ([sender.titleLabel.text isEqualToString:@"9"]){
-            [firstDigit stringByAppendingString:firstDigit];
-        }
-        else if ([sender.titleLabel.text isEqualToString:@"0"]){
-            [firstDigit stringByAppendingString:firstDigit];
+        else{
+            firstNum = [NSString stringWithFormat:@"%@%i",firstNum,sender.tag];
+            displayLabel.text = firstNum;
         }
     }
-    NSLog(@"%@",firstDigit);
-    self.solutionLabel.text = [NSString stringWithFormat:@"%@",firstDigit];
-    
-    
+    else
+        if(secondNum == NULL){
+            secondNum = [NSString stringWithFormat:@"%i",sender.tag];
+            _displayLabel.text = secondNum;
+        }
+        else{
+            secondNum = [NSString stringWithFormat:@"%@%i",secondNum,sender.tag];
+            _displayLabel.text = secondNum;
+        }
 }
 
 - (IBAction)operatorPressed:(UIButton *)sender {
+   // if(anyOperator =='+'){
+        
+   // }
+}
+
+- (IBAction)clearPressed:(UIButton *)sender {
 }
 @end
