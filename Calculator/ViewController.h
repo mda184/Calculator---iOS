@@ -13,6 +13,7 @@
     char anyOperator;
     NSString *firstNum;
     NSString *secondNum;
+    NSString *result;
 }
 - (IBAction)numberPressed:(UIButton *)sender;
 - (IBAction)operatorPressed:(UIButton *)sender;

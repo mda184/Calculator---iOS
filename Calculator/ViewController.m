@@ -21,7 +21,7 @@
     isOperatorClicked =FALSE;
     firstNum =NULL;
     secondNum = NULL;
-    //result;
+    result= NULL;
 }
 
 
@@ -35,29 +35,32 @@
 - (IBAction)numberPressed:(UIButton *)sender {
     if (isOperatorClicked == FALSE) {
         if (firstNum == NULL) {
-            firstNum = [NSString stringWithFormat:@"%i",sender.tag];
-            self.displayLabel.text = [NSString stringWithFormat:@"%i",firstNum];
+            firstNum = [NSString stringWithFormat:@"%ld",sender.tag];
+            self.displayLabel.text = [NSString stringWithFormat:@"%@",firstNum];
         }
         else{
-            firstNum = [NSString stringWithFormat:@"%@%i",firstNum,sender.tag];
-            displayLabel.text = firstNum;
+            firstNum = [NSString stringWithFormat:@"%@%ld",firstNum,sender.tag];
+            self.displayLabel.text = [NSString stringWithFormat:@"%@",firstNum];
+
         }
     }
     else
         if(secondNum == NULL){
-            secondNum = [NSString stringWithFormat:@"%i",sender.tag];
+            secondNum = [NSString stringWithFormat:@"%ld",sender.tag];
             _displayLabel.text = secondNum;
         }
         else{
-            secondNum = [NSString stringWithFormat:@"%@%i",secondNum,sender.tag];
+            secondNum = [NSString stringWithFormat:@"%@%ld",secondNum,sender.tag];
             _displayLabel.text = secondNum;
         }
 }
 
 - (IBAction)operatorPressed:(UIButton *)sender {
-   // if(anyOperator =='+'){
-        
-   // }
+     if(anyOperator =='+'){
+         if(isOperatorClicked == FALSE){
+             float ans = [self.firstNum floatValue] + [self.secondNum floatValue];
+         }
+     }
 }
 
 - (IBAction)clearPressed:(UIButton *)sender {
