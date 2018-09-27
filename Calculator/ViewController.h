@@ -8,7 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController{
+    bool isOperatorClicked;
+    char anyOperator;
+    NSString *firstNum;
+    NSString *secondNum;
+}
+- (IBAction)numberPressed:(UIButton *)sender;
+- (IBAction)operatorPressed:(UIButton *)sender;
+- (IBAction)clearPressed:(UIButton *)sender;
 
 
 @end
